@@ -1,4 +1,4 @@
-from .common.web_handler import WebHandler
+from .common.web_handler import WebHandler, HTTPError
 
 
 class TestFlow(WebHandler):
@@ -11,6 +11,11 @@ class TestFlow(WebHandler):
         self.reply(data=query)
 
 
+class NotFoundHandler(WebHandler):
+    def prepare(self):
+        raise HTTPError(status_code=404)
+
 urls = [
     (r'/test', TestFlow),
+    (r"/.*", NotFoundHandler),
 ]

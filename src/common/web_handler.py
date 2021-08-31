@@ -1,4 +1,4 @@
-from tornado.web import RequestHandler
+from tornado.web import RequestHandler, HTTPError
 from .log_handler import logger, access_logger
 import traceback
 import json
