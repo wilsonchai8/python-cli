@@ -17,7 +17,6 @@ class NotFoundHandler(WebHandler):
 
 urls = [
     (r'/test', TestFlow),
-    (r'/.*', NotFoundHandler),
 ]
 
 # append in ths last
