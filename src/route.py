@@ -13,9 +13,14 @@ class TestFlow(WebHandler):
 
 class NotFoundHandler(WebHandler):
     def prepare(self):
-        raise HTTPError(status_code=404)
+        raise HTTPError(status_code=404, log_message=self.request.uri)
 
 urls = [
     (r'/test', TestFlow),
-    (r"/.*", NotFoundHandler),
+    (r'/.*', NotFoundHandler),
 ]
+
+# append in ths last
+urls.append(
+    (r'/.*', NotFoundHandler),
+)
